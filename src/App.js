@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Routes, Route, Link } from 'react-router-dom';
+import useLocalStorage from './hooks/useLocalStorage';
+import useToggle from './hooks/useToggle';
+import ProductPage from './components/ProductPage';
+import FormStuff from './components/FormStuff';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+    <h1>React Hooks</h1>
+    
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/products">Products</Link>
+        </li>
+        <li>
+          <Link to="/forms">forms</Link>
+        </li>
+      </ul>
+    </nav>
+    
+    <Routes>
+      <Route index element={<div>Home</div>} />
+      <Route path="/products" element={<ProductPage/>} />
+      <Route path="/forms" element={<FormStuff/>} /> 
+      <Route path="*" element={<div>Route not found</div>} />
+    </Routes>
+  </div>
   );
 }
 
